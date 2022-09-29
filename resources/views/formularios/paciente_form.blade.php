@@ -28,7 +28,7 @@
             </div>
             <div class="grupo_form">
                 <label for="edad"> Edad:</label>
-                <input type="text" class="control_form" id="edad" name="edad" pattern="[18-99]{2}" value="{{old('edad')}}"><br>
+                <input type="number" min='18' max='100' class="control_form" id="edad" name="edad" value="{{old('edad')}}"><br>
                 @error('edad')
                     <i>{{$message}}</i>
                 @enderror

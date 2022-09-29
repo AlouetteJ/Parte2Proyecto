@@ -10,7 +10,7 @@
         -->
     </head>
     <body>
-        <table>
+        <table border="1">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -33,7 +33,7 @@
             @forearch ($pacientes as $paciente)
                 <tr>
                     <td>{{$paciente->id}}</td>
-                    <a href="/paciente/{{$paciente->id}}">
+                    <a href="/paciente/{{ $paciente->id }}">
                     <td>{{$paciente->nombre}}</td>
                     <td>{{$paciente->apellidos}}</td>
                     </a>

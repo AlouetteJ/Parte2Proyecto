@@ -10,7 +10,7 @@
         -->
     </head>
     <body>
-        <form id="form_reusable" method="post" action=" ">
+        <form id="form_reusable" method="POST" action="/historial">
             @csrf
             <div class="grupo_form">
                 <label for="motivos"> Motivo de consulta:</label><br>

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->int('edad')->unsigned();
+            $table->smallInterger('edad')->unsigned();
             // $table->string('nacimiento');
             // $table->string('correo');
-            // $table->string('telefono');
+            // $table->string('telefono',20);
             // $table->string('pronombre');
             // $table->string('orientacion');
             // $table->string('ocupacion');

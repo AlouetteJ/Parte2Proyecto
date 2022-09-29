@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\HistorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,7 @@ Route::get('/', function () {
 
 Route::resource('/paciente',PacienteController::class);
 
-Route::get('/historial', function () {
-    return view('formularios.historial_form');
-});
+Route::resource('/historial',HistorialController::class);
 
 Route::get('/contacto', function () {
     return view('formularios.contacto_form');

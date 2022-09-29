@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paciente;
+use App\Models\Historial;
 use Illuminate\Http\Request;
 
-class PacienteController extends Controller
+class HistorialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacientes = Paciente::all();
-        return view('pacientes.pacientesIndex', compact('pacientes'));
+        $historiales = Historial::all();
+        return view('historiales.hitorialesIndex' , compact('historiales'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('formularios.paciente_form');
+        return view('formularios.historial_form');
     }
 
     /**
@@ -37,34 +37,33 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre'=> 'required|max:255',
-            'apellidos'=> 'required|max:255',
-            'telefono'=> 'required|max:10',
+            'peso'=> 'required|max:3',
+            'estatura' => 'required|max:3'
         ]);
 
-        Paciente::create($request->all());
+        Historial::create($request->all());
 
-        return redirect('/paciente');
+        return redirect('/historial');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function show(Paciente $paciente)
+    public function show(Historial $historial)
     {
-        return view('pacientes.pacientesShow',compact('paciente'));
+        return view('historiales.historialesShow', compact('historial'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paciente $paciente)
+    public function edit(Historial $historial)
     {
         //
     }
@@ -73,10 +72,10 @@ class PacienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(Request $request, Historial $historial)
     {
         //
     }
@@ -84,10 +83,10 @@ class PacienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paciente $paciente)
+    public function destroy(Historial $historial)
     {
         //
     }
