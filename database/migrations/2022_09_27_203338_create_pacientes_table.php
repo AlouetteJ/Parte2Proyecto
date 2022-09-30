@@ -17,19 +17,20 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->smallInterger('edad')->unsigned();
-            // $table->string('nacimiento');
-            // $table->string('correo');
-            // $table->string('telefono',20);
-            // $table->string('pronombre');
-            // $table->string('orientacion');
-            // $table->string('ocupacion');
-            // $table->string('edocivil');
-            // $table->string('nacionalidad');
-            // $table->string('resactual');
-            // $table->string('resanterior');
-            // $table->string('estudios');
-            // $table->text('motivo');
+            $table->smallInteger('edad')->unsigned();
+            $table->date('nacimiento');
+            $table->string('correo');
+            $table->string('telefono',10);
+            $table->string('genero',10);
+            $table->string('pronombre');
+            $table->string('orientacion');
+            $table->string('ocupacion');
+            $table->string('edocivil');
+            $table->string('nacionalidad');
+            $table->string('resactual');
+            $table->string('resanterior');
+            $table->string('estudios');
+            $table->text('motivo');
         });
     }
 

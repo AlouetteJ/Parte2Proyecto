@@ -39,12 +39,25 @@ class PacienteController extends Controller
         $request->validate([
             'nombre'=> 'required|max:255',
             'apellidos'=> 'required|max:255',
+            'edad'=> 'required|max:2',
+            'nacimiento'=> 'required|date',
+            'correo'=> 'required',
             'telefono'=> 'required|max:10',
+            'genero'=> 'required',
+            'pronombre'=> 'required|max:255',
+            'orientacion'=> 'required|max:255',
+            'ocupacion'=> 'required|max:255',
+            'edocivil'=> 'required',
+            'nacionalidad'=> 'required|max:255',
+            'resactual'=> 'required|max:255',
+            'resanterior'=> 'required|max:255',
+            'estudios'=> 'required|max:10',
+            'motivo'=> 'required',
         ]);
 
         Paciente::create($request->all());
 
-        return redirect('/paciente');
+        return redirect('/paciente/create')->with('message','¡Guardado con exito!');
     }
 
     /**

@@ -15,8 +15,67 @@ return new class extends Migration
     {
         Schema::create('historials', function (Blueprint $table) {
             $table->id();
-            $table->string('peso');
-            $table->string('estatura');
+            $table->text('motivos')->nullable();
+            $table->string('peso')->nullable();
+            $table->string('estatura')->nullable();
+            $table->string('complexion')->nullable();
+            $table->string('tez')->nullable();
+            $table->string('alerta')->nullable();
+            $table->string('marcha')->nullable();
+            $table->text('vestimenta')->nullable();
+            $table->text('accesorios')->nullable();
+            $table->text('cicatrices')->nullable();
+            $table->text('lesiones')->nullable();
+            $table->text('cabeza')->nullable();
+            $table->text('orejas')->nullable();
+            $table->text('ojos')->nullable();
+            $table->text('nariz')->nullable();
+            $table->text('boca')->nullable();
+            $table->text('cabello')->nullable();
+            $table->text('cejas')->nullable();
+            $table->text('mandibula')->nullable();
+            $table->text('cuello')->nullable();
+            $table->text('dientes')->nullable();
+            // Familia
+            $table->string('padre')->nullable();
+            $table->string('padrevive')->nullable();
+            $table->string('madre')->nullable();
+            $table->string('madrevive')->nullable();
+            $table->string('hermano')->nullable();
+            $table->smallInteger('hermanos')->unsigned()->default(0);
+            $table->string('hermana')->nullable();
+            $table->smallInteger('hermanas')->unsigned()->default(0);
+            $table->string('hijo')->nullable();
+            $table->smallInteger('hijos')->unsigned()->default(0);
+            $table->string('hija')->nullable();
+            $table->smallInteger('hijas')->unsigned()->default(0);
+            $table->smallInteger('numerohijo')->unsigned()->default(0);
+            $table->text('vive')->nullable();
+            // Antecedentes enfermedades
+            $table->string('diabetes')->nullable();
+            $table->string('hipertension')->nullable();
+            $table->string('cancer')->nullable();
+            $table->string('otros')->nullable();
+            // Enfermedades infancia
+            $table->text('infancia')->nullable();
+            // Enfermedades familiares
+            $table->string('diabetes1')->nullable();
+            $table->string('hipertension1')->nullable();
+            $table->string('cancer1')->nullable();
+            $table->string('otros1')->nullable();
+            // Antecedentes personales
+            $table->text('habitos')->nullable();
+            $table->text('alcohol')->nullable();
+            $table->text('drogas')->nullable();
+            $table->text('alimentacion')->nullable();
+            $table->text('sueño')->nullable();
+            // Pruebas
+            //$table->text('pruebas')->nullable();
+            //$table->text('pruebas_aplicadas')->nullable();
+            //Diagnostico
+            $table->text('diagnostico')->nullable();
+            $table->text('anotaciones')->nullable();
+            $table->text('pronostico')->nullable();
         });
     }
 

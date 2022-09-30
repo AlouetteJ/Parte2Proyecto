@@ -10,6 +10,9 @@
         -->
     </head>
     <body>
+        @if(session('message'))
+            <div class="alerta" >{{session('message')}}</div>
+        @endif
         <form id="form_reusable" method="post" action="/paciente">
             @csrf
             <div class="grupo_form">
@@ -35,7 +38,7 @@
             </div>
             <div class="grupo_form">
                 <label for="nacimiento"> Fecha de nacimiento:</label>
-                <input type="date" class="control_form" id="nacimiento" name="nacimiento" min="1923-01-01" max="2004-01-01"value="{{old('nacimiento') ?? 2004-01-01}}"><br>
+                <input type="date" class="control_form" id="nacimiento" name="nacimiento" min="1923-01-01" max="2004-01-01" value="{{old('nacimiento')}}"><br>
                 @error('nacimiento')
                     <i>{{$message}}</i>
                 @enderror
@@ -56,12 +59,12 @@
             </div>
             <div class="grupo_form">
                 <label for="genero"> Genero:</label>
-                <label for="Hombre"> Hombre</label>
-                <input type="radio" class="control_form" id="Hombre" name="genero" value="{{old('Hombre')}}" checked>
-                <label for="Mujer"> Mujer</label>
-                <input type="radio" class="control_form" id="Mujer" name="genero" value="{{old('Mujer')}}">
-                <label for="Otro"> Otro</label>
-                <input type="radio" class="control_form" id="Otro" name="genero" value="{{old('Otro')}}"><br>
+                <label for="hombre"> Hombre</label>
+                <input type="radio" class="control_form" id="hombre" name="genero" value="Hombre">
+                <label for="mujer"> Mujer</label>
+                <input type="radio" class="control_form" id="mujer" name="genero" value="Mujer">
+                <label for="otro"> Otro</label>
+                <input type="radio" class="control_form" id="otro" name="genero" value="Otro" checked><br>
                 @error('genero')
                     <i>{{$message}}</i>
                 @enderror
@@ -90,11 +93,11 @@
             <div class="grupo_form">
                 <label for="edocivil"> Estado Civil:</label>
                 <select class="control_form" id="edocivil" name="edocivil" value="{{old('edocivil')}}">
-                    <option value="soltero">Soltero(a)</option>
-                    <option value="casado" selected>Casado(a)</option>
-                    <option value="viudo">Viudo(a)</option>
-                    <option value="libre">Unión libre</option>
-                    <option value="divorciado">Divorciado(a)</option>
+                    <option value="Soltero">Soltero(a)</option>
+                    <option value="Casado" selected>Casado(a)</option>
+                    <option value="Viudo">Viudo(a)</option>
+                    <option value="Union Libre">Unión libre</option>
+                    <option value="Divorciado">Divorciado(a)</option>
                 </select><br>
                 @error('edocivil')
                     <i>{{$message}}</i>
@@ -124,16 +127,16 @@
             <div class="grupo_form">
                 <label for="estudios"> Estudios:</label>
                 <select class="control_form" id="estudios" name="estudios" value="{{old('estudios')}}">
-                    <option value="primaInc">Primaria incompleta</option>
-                    <option value="primaComp">Primaria terminada</option>
-                    <option value="secInc">Secundaria incompleta</option>
-                    <option value="secComp">Secundaria terminada</option>
-                    <option value="prepaInc">Prepa incompleta</option>
-                    <option value="prepaComp">Prepa termina</option>
-                    <option value="licInc">Licenciatura incompleta</option>
-                    <option value="licComp">Licenciatura terminada</option>
-                    <option value="maestria">Maestria</option>
-                    <option value="doctorado">Doctorado</option>
+                    <option value="Primaria incompleta">Primaria incompleta</option>
+                    <option value="Primaria terminada">Primaria terminada</option>
+                    <option value="Secundaria incompleta">Secundaria incompleta</option>
+                    <option value="Secundaria terminada">Secundaria terminada</option>
+                    <option value="Prepa incompleta">Prepa incompleta</option>
+                    <option value="Prepa terminada">Prepa terminada</option>
+                    <option value="Licenciatura incompleta">Licenciatura incompleta</option>
+                    <option value="Licenciatura terminada">Licenciatura terminada</option>
+                    <option value="Maestria">Maestria</option>
+                    <option value="Doctorado">Doctorado</option>
                 </select><br>
                 @error('estudios')
                     <i>{{$message}}</i>
@@ -148,7 +151,7 @@
             </div>
             <div class="grupo_form">
                 <label for="motivo"> Motivo de consulta:</label><br>
-                <textarea class="control_form" type="textarea" name="motivo" id="motivo" placeholder="Tu motivo de consulta" maxlength="6000" rows="7">{{old('motivo')}}</textarea><br>
+                <textarea class="control_form" type="textarea" name="motivo" id="motivo" placeholder="¿Cual es el motivo para asistir a terapia?" maxlength="6000" rows="7">{{old('motivo')}}</textarea><br>
                 @error('motivo')
                     <i>{{$message}}</i>
                 @enderror

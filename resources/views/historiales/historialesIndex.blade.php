@@ -10,17 +10,11 @@
         -->
     </head>
     <body>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-            </tr>
-            <tr>
-                <!-- <td>{{$paciente->id}}</td>
-                <td>{{$paciente->nombre}}</td>
-                <td>{{$paciente->apellidos}}</td> -->
-            </tr>
-        </table>
+        <h2>Historial Pacientes</h2>
+        <ul>
+            @foreach($historials as $historial)
+                <li>{{ $historial }}</li>
+            @endforeach
+        </ul>
     </body>
 </html>

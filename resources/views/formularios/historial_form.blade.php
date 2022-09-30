@@ -10,6 +10,9 @@
         -->
     </head>
     <body>
+        @if(session('message'))
+            <div class="alerta" >{{session('message')}}</div>
+        @endif
         <form id="form_reusable" method="POST" action="/historial">
             @csrf
             <div class="grupo_form">
@@ -69,27 +72,27 @@
             <fieldset>
                 <legend>Familia</legend>
                 <div>
-                    <label for="padre"> Padre:</label><input type="checkbox" id="padre" name="familia" class="form-control">
-                    <label for="padre"> Finado:</label><input type="checkbox" id="padre" name="familia" class="form-control"><br>
+                    <label for="padre"> Padre:</label><input type="checkbox" id="padre" name="familia" class="form-control" value="Si tiene">
+                    <label for="padre"> Finado:</label><input type="checkbox" id="padrevive" name="familia" class="form-control" value="Si"><br>
                 </div>
                 <div>
-                    <label for="madre"> Madre:</label><input type="checkbox" id="madre" name="familia" class="form-control">
-                    <label for="madre"> Finado:</label><input type="checkbox" id="madre" name="familia" class="form-control"><br>
+                    <label for="madre"> Madre:</label><input type="checkbox" id="madre" name="familia" class="form-control" value="Si tiene">
+                    <label for="madre"> Finado:</label><input type="checkbox" id="madrevive" name="familia" class="form-control" value="Si"><br>
                 </div>
                 <div>
-                    <label for="hermano"> Hermano:</label><input type="checkbox" id="hermano" name="familia" class="form-control">
-                    <label for="hermano"> Cuantos:</label><input type="number" id="hermano" name="hermano" min="1" max="20"><br>
+                    <label for="hermano"> Hermano:</label><input type="checkbox" id="hermano" name="familia" class="form-control" value="Si tiene">
+                    <label for="hermano"> Cuantos:</label><input type="number" id="hermanos" name="hermano" min="1" max="20"><br>
                 </div>
                 <div>
-                    <label for="hermana"> Hermana:</label><input type="checkbox" id="hermana" name="familia" class="form-control">
-                    <label for="hermana"> Cuantos:</label><input type="number" id="hermana" name="hermana" min="1" max="20"><br>
+                    <label for="hermana"> Hermana:</label><input type="checkbox" id="hermana" name="familia" class="form-control" value="Si tiene">
+                    <label for="hermana"> Cuantos:</label><input type="number" id="hermanas" name="hermana" min="1" max="20"><br>
                 </div>
                 <div>
-                    <label for="hijo"> Hijo:</label><input type="checkbox" id="hijo" name="familia" class="form-control">
+                    <label for="hijo"> Hijo:</label><input type="checkbox" id="hijo" name="familia" class="form-control" value="Si tiene">
                     <label for="hijo"> Cuantos:</label><input type="number" id="hijo" name="hijo" min="1" max="20"><br>
                 </div>
                 <div>
-                    <label for="hija"> Hija:</label><input type="checkbox" id="hija" name="familia" class="form-control">
+                    <label for="hija"> Hija:</label><input type="checkbox" id="hija" name="familia" class="form-control" value="Si tiene">
                     <label for="hija"> Cuantos:</label><input type="number" id="hija" name="hija" min="1" max="20"><br>
                 </div>
                 <div>
@@ -104,18 +107,18 @@
             <fieldset>
                 <legend>Antecedentes enfermedades</legend>
                 <label for="enf_actuales"> Enfermedades actuales:</label><br>
-                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" id="diabetes" name="enf_actuales" class="form-control"><br>
-                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" id="hipertension" name="enf_actuales" class="form-control"><br>
-                <label for="enf_actuales"> Cancer:</label><input type="checkbox" id="cancer" name="enf_actuales" class="form-control"><br>
+                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" id="diabetes" name="enf_actuales" class="form-control" value="Padece"><br>
+                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" id="hipertension" name="enf_actuales" class="form-control" value="Padece"><br>
+                <label for="enf_actuales"> Cancer:</label><input type="checkbox" id="cancer" name="enf_actuales" class="form-control" value="Padece"><br>
                 <label for="enf_actuales"> Otros:</label><br>
                 <textarea type="text" class="form-control" id="otros" name="otros" value="{{old('otros')}}"></textarea><br><br>
-                <label for="enf_actuales"> Enfermedades infancia:</label><br>
+                <label for="enf_infancia"> Enfermedades infancia:</label><br>
                 <textarea type="text" class="form-control" id="infancia" name="infancia" value="{{old('infancia')}}"></textarea><br><br>
-                <label for="enf_actuales"> Enfermedades familiares:</label><br>
-                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" id="diabetes1" name="enf_actuales" class="form-control"><br>
-                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" id="hipertension1" name="enf_actuales" class="form-control"><br>
-                <label for="enf_actuales"> Cancer:</label><input type="checkbox" id="cancer1" name="enf_actuales" class="form-control"><br>
-                <label for="enf_actuales"> Otros:</label><br>
+                <label for="enf_fam"> Enfermedades familiares:</label><br>
+                <label for="enf_fam"> Diabetes:</label><input type="checkbox" id="diabetes1" name="enf_actuales" class="form-control" value="Padecieron"><br>
+                <label for="enf_fam"> Hipertension:</label><input type="checkbox" id="hipertension1" name="enf_actuales" class="form-control" value="Padecieron"><br>
+                <label for="enf_fam"> Cancer:</label><input type="checkbox" id="cancer1" name="enf_actuales" class="form-control" value="Padecieron"><br>
+                <label for="enf_fam"> Otros:</label><br>
                 <textarea type="text" class="form-control" id="otros1" name="otros1" value="{{old('otros1')}}"></textarea><br>
             </fieldset>
             <fieldset>

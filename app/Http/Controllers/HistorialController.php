@@ -14,8 +14,8 @@ class HistorialController extends Controller
      */
     public function index()
     {
-        $historiales = Historial::all();
-        return view('historiales.hitorialesIndex' , compact('historiales'));
+        $historials = Historial::all();
+        return view('historiales.historialesIndex' , compact('historials'));
     }
 
     /**
@@ -37,13 +37,13 @@ class HistorialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'peso'=> 'required|max:3',
-            'estatura' => 'required|max:3'
+            'peso'=> 'max:5',
+            'estatura' => 'max:4'  
         ]);
 
         Historial::create($request->all());
 
-        return redirect('/historial');
+        return redirect('/historial/create')->with('message','¡Guardado con exito!');;
     }
 
     /**
