@@ -51,7 +51,7 @@ class PacienteController extends Controller
             'nacionalidad'=> 'required|max:255',
             'resactual'=> 'required|max:255',
             'resanterior'=> 'required|max:255',
-            'estudios'=> 'required|max:10',
+            'estudios'=> 'required|max:255',
             'motivo'=> 'required',
         ]);
 
@@ -79,7 +79,7 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        return view('pacientes.pacientesEdit', compact('paciente'));
     }
 
     /**
@@ -91,7 +91,28 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente)
     {
-        //
+        $request->validate([
+            'nombre'=> 'required|max:255',
+            'apellidos'=> 'required|max:255',
+            'edad'=> 'required|max:2',
+            'nacimiento'=> 'required|date',
+            'correo'=> 'required',
+            'telefono'=> 'required|max:10',
+            'genero'=> 'required',
+            'pronombre'=> 'required|max:255',
+            'orientacion'=> 'required|max:255',
+            'ocupacion'=> 'required|max:255',
+            'edocivil'=> 'required',
+            'nacionalidad'=> 'required|max:255',
+            'resactual'=> 'required|max:255',
+            'resanterior'=> 'required|max:255',
+            'estudios'=> 'required|max:255',
+            'motivo'=> 'required',
+        ]);
+
+        Paciente::where('id', $paciente->id)->update($request->except('_token', '_method','ine'));
+
+        return redirect('/paciente');
     }
 
     /**
@@ -102,6 +123,7 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
-        //
+        $paciente->delete();
+        return redirect('/paciente');
     }
 }

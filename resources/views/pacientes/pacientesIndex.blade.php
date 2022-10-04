@@ -29,6 +29,8 @@
                 <th>Residencia Anterior</th>
                 <th>Estudios</th>
                 <th>Motivos</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
             @foreach ($pacientes as $paciente)
                 <tr>
@@ -53,6 +55,12 @@
                     <td>{{$paciente->resanterior}}</td>
                     <td>{{$paciente->estudios}}</td>
                     <td>{{$paciente->motivo}}</td> 
+                    <td><a href="/paciente/{{$paciente->id}}/edit">Editar</a></td>
+                    <td><form action="/paciente/{{$paciente->id}}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Eliminar">
+                    </form></td>
                 </tr>
             @endforeach
         </table>
