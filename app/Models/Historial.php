@@ -13,11 +13,16 @@ class Historial extends Model
         'motivos', 'peso', 'estatura', 'complexion', 'tez',
         'alerta', 'marcha', 'vestimenta', 'accesorios', 'cicatrices',
         'lesiones', 'cabeza', 'orejas', 'ojos', 'nariz', 'boca',
-        'cabello', 'cejas', 'mandibula', 'cuello', 'dientes', 'padre',
-        'madre', 'hermano', 'hermana', 'hijo', 'hija', 'numerohijo',
-        'vive', 'diabetes', 'hipertension', 'cancer', 'otros', 'infancia',
-        'diabetes1', 'hipertension1', 'cancer1', 'otros1', 'habitos', 'alcohol',
+        'cabello', 'cejas', 'mandibula', 'cuello', 'dientes', 'padre', 'padrevive',
+        'madre', 'madrevive', 'hermano', 'hermanos', 'hermana', 'hermanas', 'hijo',
+        'hijos', 'hija', 'hijas', 'numerohijo', 'vive', 
+        'enf_actuales', 'infancia', 'enf_fam', 'habitos', 'alcohol',
         'drogas', 'alimentacion', 'sueño', 'diagnostico', 'anotaciones', 'pronostico'
         //,'pruebas','pruebas_aplicadas'
     ];
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
 }

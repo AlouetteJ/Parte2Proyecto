@@ -1,163 +1,250 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Formulario</title>
+<x-plantilla>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top mb-5" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="/inicio">Psicoterapeuta</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Inicio</a></li>-->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#salir">Salir</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav><br><br><br><br><br>
 
-        <!-- Estilo css y scrip de js
-        <link rel=" " href=" " >
-        <script src=" "></script>
-        -->
-    </head>
-    <body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
         @if(session('message'))
             <div class="alerta" >{{session('message')}}</div>
         @endif
+    <div class="container">
         <form id="form_reusable" method="post" action="/paciente">
             @csrf
-            <div class="grupo_form">
-                <label for="nombre"> Nombre(s):</label>
-                <input type="text" class="control_form" id="nombre" name="nombre" value="{{old('nombre')}}"><br>
-                @error('nombre')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="nombre"> Nombre(s):</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="nombre" name="nombre" value="{{old('nombre')}}"><br>
+                        @error('nombre')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="apellidos"> Apellido(s):</label>
-                <input type="text" class="control_form" id="apellidos" name="apellidos" value="{{old('apellidos')}}"><br>
-                @error('apellidos')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="apellidos"> Apellido(s):</label>                 
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="apellidos" name="apellidos" value="{{old('apellidos')}}"><br>
+                        @error('apellidos')
+                            <i>{{$message}}</i>
+                        @enderror                 
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="edad"> Edad:</label>
-                <input type="number" min='18' max='100' class="control_form" id="edad" name="edad" value="{{old('edad')}}"><br>
-                @error('edad')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="edad"> Edad:</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" min='18' max='100' class="control_form" id="edad" name="edad" value="{{old('edad')}}"><br>
+                        @error('edad')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-25">
+                    <label for="nacimiento"> Fecha de nacimiento:</label>
+                </div>
+                <div class="col-75">
+                    <input type="date" class="control_form" id="nacimiento" name="nacimiento" min="1923-01-01" max="2004-01-01" value="{{old('nacimiento')}}"><br>
+                        @error('nacimiento')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="nacimiento"> Fecha de nacimiento:</label>
-                <input type="date" class="control_form" id="nacimiento" name="nacimiento" min="1923-01-01" max="2004-01-01" value="{{old('nacimiento')}}"><br>
-                @error('nacimiento')
-                    <i>{{$message}}</i>
-                @enderror
+            
+            <div class="row">
+                <div class="col-25">
+                    <label for="correo"> Correo:</label>
+                </div>
+                <div class="col-75">
+                    <input type="email" class="control_form" id="correo" name="correo" value="{{old('correo')}}"><br>
+                        @error('correo')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="correo"> Correo:</label>
-                <input type="email" class="control_form" id="correo" name="correo" value="{{old('correo')}}"><br>
-                @error('correo')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="telefono"> Telefono:</label>
+                </div>
+                <div class="col-75">
+                    <input type="tel" class="control_form" id="telefono" name="telefono" value="{{old('telefono')}}" pattern="[0-9]{10}"><br>
+                        @error('telefono')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="telefono"> Telefono:</label>
-                <input type="tel" class="control_form" id="telefono" name="telefono" value="{{old('telefono')}}" pattern="[0-9]{10}"><br>
-                @error('telefono')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="genero"> Genero:</label>
+                </div>
+                <div class="col-75">
+                    <label for="hombre"> Hombre</label>
+                    <input type="radio" class="control_form" id="hombre" name="genero" value="Hombre">
+                    <label for="mujer"> Mujer</label>
+                    <input type="radio" class="control_form" id="mujer" name="genero" value="Mujer">
+                    <label for="otro"> Otro</label>
+                    <input type="radio" class="control_form" id="otro" name="genero" value="Otro" checked><br>
+                        @error('genero')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="genero"> Genero:</label>
-                <label for="hombre"> Hombre</label>
-                <input type="radio" class="control_form" id="hombre" name="genero" value="Hombre">
-                <label for="mujer"> Mujer</label>
-                <input type="radio" class="control_form" id="mujer" name="genero" value="Mujer">
-                <label for="otro"> Otro</label>
-                <input type="radio" class="control_form" id="otro" name="genero" value="Otro" checked><br>
-                @error('genero')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="pronombre"> Pronombre:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="pronombre" name="pronombre" value="{{old('pronombre')}}"><br>
+                        @error('pronombre')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="pronombre"> Pronombre:</label>
-                <input type="text" class="control_form" id="pronombre" name="pronombre" value="{{old('pronombre')}}"><br>
-                @error('pronombre')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="orientacion"> Orientacion:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="orientacion" name="orientacion" value="{{old('orientacion')}}"><br>
+                        @error('orientacion')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="orientacion"> Orientacion:</label>
-                <input type="text" class="control_form" id="orientacion" name="orientacion" value="{{old('orientacion')}}"><br>
-                @error('orientacion')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="ocupacion"> Ocupacion:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="ocupacion" name="ocupacion" value="{{old('ocupacion')}}"><br>
+                        @error('ocupacion')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="ocupacion"> Ocupacion:</label>
-                <input type="text" class="control_form" id="ocupacion" name="ocupacion" value="{{old('ocupacion')}}"><br>
-                @error('ocupacion')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="edocivil"> Estado Civil:</label>
+                </div>
+                <div class="col-75">
+                    <select class="control_form" id="edocivil" name="edocivil" value="{{old('edocivil')}}">
+                        <option value="Soltero">Soltero(a)</option>
+                        <option value="Casado" selected>Casado(a)</option>
+                        <option value="Viudo">Viudo(a)</option>
+                        <option value="Union Libre">Unión libre</option>
+                        <option value="Divorciado">Divorciado(a)</option>
+                    </select>
+                    @error('edocivil')
+                        <i>{{$message}}</i>
+                    @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="edocivil"> Estado Civil:</label>
-                <select class="control_form" id="edocivil" name="edocivil" value="{{old('edocivil')}}">
-                    <option value="Soltero">Soltero(a)</option>
-                    <option value="Casado" selected>Casado(a)</option>
-                    <option value="Viudo">Viudo(a)</option>
-                    <option value="Union Libre">Unión libre</option>
-                    <option value="Divorciado">Divorciado(a)</option>
-                </select><br>
-                @error('edocivil')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="nacionalidad"> Nacionalidad:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="nacionalidad" name="nacionalidad" value="{{old('nacionalidad')}}"><br>
+                        @error('nacionalidad')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="nacionalidad"> Nacionalidad:</label>
-                <input type="text" class="control_form" id="nacionalidad" name="nacionalidad" value="{{old('nacionalidad')}}"><br>
-                @error('nacionalidad')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="resactual"> Residencia Actual:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="resactual" name="resactual" value="{{old('resactual')}}"><br>
+                        @error('resactual')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="resactual"> Residencia Actual:</label>
-                <input type="text" class="control_form" id="resactual" name="resactual" value="{{old('resactual')}}"><br>
-                @error('resactual')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="resanterior"> Residencia Anterior:</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" class="control_form" id="resanterior" name="resanterior" value="{{old('resanterior')}}"><br>
+                        @error('resanterior')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="resanterior"> Residencia Anterior:</label>
-                <input type="text" class="control_form" id="resanterior" name="resanterior" value="{{old('resanterior')}}"><br>
-                @error('resanterior')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="estudios"> Estudios:</label>
+                </div>
+                <div class="col-75">
+                    <select class="control_form" id="estudios" name="estudios" value="{{old('estudios')}}">
+                        <option value="Primaria incompleta">Primaria incompleta</option>
+                        <option value="Primaria terminada">Primaria terminada</option>
+                        <option value="Secundaria incompleta">Secundaria incompleta</option>
+                        <option value="Secundaria terminada">Secundaria terminada</option>
+                        <option value="Prepa incompleta">Prepa incompleta</option>
+                        <option value="Prepa terminada">Prepa terminada</option>
+                        <option value="Licenciatura incompleta">Licenciatura incompleta</option>
+                        <option value="Licenciatura terminada">Licenciatura terminada</option>
+                        <option value="Maestria">Maestria</option>
+                        <option value="Doctorado">Doctorado</option>
+                    </select>
+                    @error('estudios')
+                        <i>{{$message}}</i>
+                    @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="estudios"> Estudios:</label>
-                <select class="control_form" id="estudios" name="estudios" value="{{old('estudios')}}">
-                    <option value="Primaria incompleta">Primaria incompleta</option>
-                    <option value="Primaria terminada">Primaria terminada</option>
-                    <option value="Secundaria incompleta">Secundaria incompleta</option>
-                    <option value="Secundaria terminada">Secundaria terminada</option>
-                    <option value="Prepa incompleta">Prepa incompleta</option>
-                    <option value="Prepa terminada">Prepa terminada</option>
-                    <option value="Licenciatura incompleta">Licenciatura incompleta</option>
-                    <option value="Licenciatura terminada">Licenciatura terminada</option>
-                    <option value="Maestria">Maestria</option>
-                    <option value="Doctorado">Doctorado</option>
-                </select><br>
-                @error('estudios')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="ine"> Fotografias ine por dos lados:</label>
+                </div>
+                <div class="col-75">
+                    <input type="file" class="control_form" id="ine" name="ine" accept="image/png, image/jpeg, image/jpg"><br>
+                        @error('ine')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="ine"> Fotografias ine por dos lados:</label><br>
-                <input type="file" class="control_form" id="ine" name="ine" accept="image/png, image/jpeg, image/jpg"><br>
-                @error('ine')
-                    <i>{{$message}}</i>
-                @enderror
+            <div class="row">
+                <div class="col-25">
+                    <label for="motivo"> Motivo de consulta:</label>
+                </div>
+                <div class="col-75">
+                    <textarea class="control_form" type="textarea" name="motivo" id="motivo" placeholder="¿Cual es el motivo para asistir a terapia?" maxlength="6000" rows="7">{{old('motivo')}}</textarea><br>
+                        @error('motivo')
+                            <i>{{$message}}</i>
+                        @enderror
+                </div>
+            <div class="row">
+                <button type="submit" class="boton_enviar" id="boton_historial">Enviar &rarr;</button>
             </div>
-            <div class="grupo_form">
-                <label for="motivo"> Motivo de consulta:</label><br>
-                <textarea class="control_form" type="textarea" name="motivo" id="motivo" placeholder="¿Cual es el motivo para asistir a terapia?" maxlength="6000" rows="7">{{old('motivo')}}</textarea><br>
-                @error('motivo')
-                    <i>{{$message}}</i>
-                @enderror
-            </div>
-
-            <button type="submit" class="boton_enviar" id="boton_historial">Enviar &rarr;</button>
         </form>
-    </body>
-</html>
+    </div>
+</x-plantilla>

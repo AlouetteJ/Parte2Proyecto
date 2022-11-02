@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\Historial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
+    public function _construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +21,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $pacientes = Paciente::all();
         return view('pacientes.pacientesIndex', compact('pacientes'));
     }
@@ -34,7 +42,7 @@ class PacienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) 
     {
         $request->validate([
             'nombre'=> 'required|max:255',
@@ -55,9 +63,26 @@ class PacienteController extends Controller
             'motivo'=> 'required',
         ]);
 
-        Paciente::create($request->all());
-
-        return redirect('/paciente/create')->with('message','¡Guardado con exito!');
+        $paciente = new Paciente();
+        $paciente->nombre = $request->nombre;
+        $paciente->apellidos = $request->apellidos;
+        $paciente->edad = $request->edad;
+        $paciente->nacimiento = $request->nacimiento;
+        $paciente->correo = $request->correo;
+        $paciente->telefono = $request->telefono;
+        $paciente->genero = $request->genero;
+        $paciente->pronombre = $request->pronombre;
+        $paciente->orientacion = $request->orientacion;
+        $paciente->ocupacion = $request->ocupacion;
+        $paciente->edocivil = $request->edocivil;
+        $paciente->nacionalidad = $request->nacionalidad;
+        $paciente->resactual = $request->resactual;
+        $paciente->resanterior = $request->resanterior;
+        $paciente->estudios = $request->estudios;
+        $paciente->motivo = $request->motivo;
+        Auth::user()->paciente()->save($paciente);
+        
+        return redirect()->route('paciente.show',$paciente->id);
     }
 
     /**
@@ -68,7 +93,8 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        return view('pacientes.pacientesShow',compact('paciente'));
+        $historial = $paciente->historial;
+        return view('pacientes.pacientesShow',compact('paciente','historial'));
     }
 
     /**
@@ -79,6 +105,8 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
+        $user = Auth::user();
+        $paciente = $user->paciente;
         return view('pacientes.pacientesEdit', compact('paciente'));
     }
 

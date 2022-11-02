@@ -51,4 +51,7 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    //Agregar solo si no hay historial
+    
+
 });

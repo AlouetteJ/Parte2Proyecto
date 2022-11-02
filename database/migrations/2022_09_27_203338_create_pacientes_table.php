@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
             $table->string('nombre');
             $table->string('apellidos');
             $table->smallInteger('edad')->unsigned();

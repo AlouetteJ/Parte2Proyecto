@@ -1,41 +1,51 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Contacto</title>
-
-        <!-- Estilo css y scrip de js
-        <link rel=" " href=" " >
-        <script src=" "></script>
-        -->
-    </head>
+<x-plantilla>
     <body>
-        <h2>Contactame</h2> ¿Tienes alguna pregunta?
-        <p> Envia tu mensaje en el formulario debajo y me contactare contigo lo mas pronto posible. </p>
-        <form method="post" id="form_reusable" action=" ">
-            @csrf
-            <div class="grupo_form">
-                <label for="nombre"> Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre')}}"><br>
-                @error('nombre')
-                    <i>{{$message}}</i>
-                @enderror
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="/inicio">Psicoterapeuta</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contacto">Contactame</a></li> -->
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Iniciar sesion</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="grupo_form">
-                <label for="correo"> Correo:</label>
-                <input type="email" class="form-control" id="correo" name="correo" value="{{old('correo')}}"><br>
-                @error('correo')
-                    <i>{{$message}}</i>
-                @enderror
-            </div>
-            <div class="grupo_form">
-                <label for="mensaje"> Mensaje:</label><br>
-                <textarea class="form-control" type="textarea" name="mensaje" id="mensaje" placeholder="Tu mensaje aqui" maxlength="6000" rows="7">{{old('mensaje')}}</textarea>
-                @error('mensaje')
-                    <i>{{$message}}</i>
-                @enderror
-            </div>
-            <button type="submit" class="btn btn-lg btn-success pull-right" id="btnContactUs">Enviar &rarr;</button>
-        </form>
+        </nav><br>
+        <div class="mt-5 p-5">
+            <h2>Contactame</h2> ¿Tienes alguna pregunta?
+            <p> Envia tu mensaje en el formulario debajo y me contactare contigo lo mas pronto posible. </p>
+            <form method="post" id="form_reusable" action="mailto:alondra.ajag@gmail.com">
+                @csrf
+                <div class="grupo_form">
+                    <label for="nombre"> Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre')}}"><br>
+                    @error('nombre')
+                        <i>{{$message}}</i>
+                    @enderror
+                </div>
+                <div class="grupo_form">
+                    <label for="correo"> Correo:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="example@test.com" value="{{old('correo')}}"><br>
+                    @error('correo')
+                        <i>{{$message}}</i>
+                    @enderror
+                </div>
+                <div class="grupo_form">
+                    <label for="mensaje"> Mensaje:</label><br>
+                    <textarea class="form-control" type="textarea" name="mensaje" id="mensaje" placeholder="Tu mensaje aqui" maxlength="6000" rows="7">{{old('mensaje')}}</textarea>
+                    @error('mensaje')
+                        <i>{{$message}}</i>
+                    @enderror
+                </div>
+                <button type="submit" class="btn btn-lg btn-success pull-right" id="btnContactUs">Enviar &rarr;</button>
+                <button type="reset" class="btn btn-lg btn-success" id="btnContactUs" name="reset" >Limpiar</button>
+            </form>
+        </div>
     </body>
-</html>
+</x-plantilla>

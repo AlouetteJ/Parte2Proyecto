@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('historials', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('paciente_id')->constrained();
             $table->text('motivos')->nullable();
             $table->string('peso')->nullable();
             $table->string('estatura')->nullable();
@@ -42,27 +43,21 @@ return new class extends Migration
             $table->string('madre')->nullable();
             $table->string('madrevive')->nullable();
             $table->string('hermano')->nullable();
-            $table->smallInteger('hermanos')->unsigned()->default(0);
+            $table->smallInteger('hermanos')->unsigned()->default(0)->nullable();
             $table->string('hermana')->nullable();
-            $table->smallInteger('hermanas')->unsigned()->default(0);
+            $table->smallInteger('hermanas')->unsigned()->default(0)->nullable();
             $table->string('hijo')->nullable();
-            $table->smallInteger('hijos')->unsigned()->default(0);
+            $table->smallInteger('hijos')->unsigned()->default(0)->nullable();
             $table->string('hija')->nullable();
-            $table->smallInteger('hijas')->unsigned()->default(0);
-            $table->smallInteger('numerohijo')->unsigned()->default(0);
+            $table->smallInteger('hijas')->unsigned()->default(0)->nullable();
+            $table->smallInteger('numerohijo')->unsigned()->default(0)->nullable();
             $table->text('vive')->nullable();
             // Antecedentes enfermedades
-            $table->string('diabetes')->nullable();
-            $table->string('hipertension')->nullable();
-            $table->string('cancer')->nullable();
-            $table->string('otros')->nullable();
+            $table->string('enf_actuales')->nullable();
             // Enfermedades infancia
             $table->text('infancia')->nullable();
             // Enfermedades familiares
-            $table->string('diabetes1')->nullable();
-            $table->string('hipertension1')->nullable();
-            $table->string('cancer1')->nullable();
-            $table->string('otros1')->nullable();
+            $table->string('enf_fam')->nullable();
             // Antecedentes personales
             $table->text('habitos')->nullable();
             $table->text('alcohol')->nullable();

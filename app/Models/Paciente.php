@@ -11,4 +11,14 @@ class Paciente extends Model
     public $timestamps = false;
     protected $fillable = ['nombre', 'apellidos', 'edad', 'nacimiento', 'correo', 'telefono', 'genero', 'pronombre', 'orientacion', 'ocupacion', 'edocivil', 'resactual', 'resanterior', 'nacionalidad', 'estudios', 'motivo'];
     // protected $guarded Esto es lo contrario, nos dice que no se puede
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function historial()
+    {
+        return $this->hasOne(Historial::class);
+    }
 }
