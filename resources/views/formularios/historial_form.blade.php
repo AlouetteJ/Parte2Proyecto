@@ -176,9 +176,9 @@
             </div>
             <div class="grupo_form">
                 <label for="pruebas_aplicadas"> Pruebas aplicadas:</label><br>
-                <textarea class="control_form" name="pruebasA" value="{{old('pruebasA')}}"></textarea><br>
-                <input type="file" class="control_form" name="pruebasB" accept="image/png, image/jpeg, image/jpg, application/pdf"><br>
-                @error('pruebasA')
+                <textarea class="control_form" name="pruebas_aplicadas" value="{{old('pruebas_aplicadas')}}"></textarea><br>
+                <input type="file" class="control_form" name="pruebas_aplicadas" accept="image/png, image/jpeg, image/jpg, application/pdf"><br>
+                @error('pruebas_aplicadas')
                     <i>{{$message}}</i>
                 @enderror
             </div>

@@ -65,8 +65,8 @@ return new class extends Migration
             $table->text('alimentacion')->nullable();
             $table->text('sueño')->nullable();
             // Pruebas
-            //$table->text('pruebas')->nullable();
-            //$table->text('pruebas_aplicadas')->nullable();
+            $table->text('pruebas')->nullable();
+            $table->text('pruebas_aplicadas')->nullable();
             //Diagnostico
             $table->text('diagnostico')->nullable();
             $table->text('anotaciones')->nullable();

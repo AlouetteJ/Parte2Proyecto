@@ -37,8 +37,11 @@
         <h5><a href="/paciente/{{$paciente->id}}/edit">Editar</a><h5><br>
 
         <h2>Historial del paciente<h2>
+        @empty($historial)
         <h5><a href="/historial/create?paciente_id={{$paciente->id}}" id="agrega">Agregar</a><h5><br>
-        <h5>Motivos de consulta: {{$historial->motivos}}<h5>
+        @endempty
+        @isset($historial)
+        <h5>Motivos de consulta: {{$historial->motivos}}<h5><br>
         <h4>Media Afiliacion</h4>
         <h5>Peso: {{$historial->peso}}<h5>
         <h5>Estatura: {{$historial->estatura}}<h5>
@@ -58,7 +61,7 @@
         <h5>Cejas: {{$historial->cejas}}<h5>
         <h5>Mandibula: {{$historial->mandibula}}<h5>
         <h5>Cuello: {{$historial->cuello}}<h5>
-        <h5>Dientes: {{$historial->dientes}}<h5>
+        <h5>Dientes: {{$historial->dientes}}<h5><br>
         <h4>Familia<h4>
         <h5>Padre: {{$historial->padre}}<h5><h5>Finado: {{$historial->padrevive}}<h5>
         <h5>Madre: {{$historial->madre}}<h5><h5>Finada: {{$historial->madrevive}}<h5>
@@ -67,22 +70,24 @@
         <h5>Hijo: {{$historial->hijo}}<h5><h5>Cuantos: {{$historial->hijos}}<h5>
         <h5>Hija: {{$historial->hija}}<h5><h5>Cuantos: {{$historial->hijas}}<h5>
         <h5>Numero de hijo: {{$historial->numerohijo}}<h5>
-        <h5>Con quienes vive: {{$historial->vive}}<h5>
+        <h5>Con quienes vive: {{$historial->vive}}<h5><br>
         <h4>Antecedentes enfermedades<h4>
         <h5>Enfermedades actuales: {{$historial->enf_actuales}}<h5>
         <h5>Enfermedades infancia: {{$historial->infancia}}<h5>
-        <h5>Enfermedades familiares: {{$historial->enf_fam}}<h5>
+        <h5>Enfermedades familiares: {{$historial->enf_fam}}<h5><br>
         <h4>Antecedentes personales<h4>
         <h5>Habitos: {{$historial->habitos}}<h5>
         <h5>Ingesta de alcohol: {{$historial->alcohol}}<h5>
         <h5>Ingesta de drogas: {{$historial->drogas}}<h5>
         <h5>Tipo de alimentación: {{$historial->alimentacion}}<h5>
-        <h5>Habitos de sueño: {{$historial->sueño}}<h5>
-        <h5>Pruebas: <h5>
-        <h5>Pruebas aplicadas: <h5>
+        <h5>Habitos de sueño: {{$historial->sueño}}<h5><br>
+        <h4>Pruebas<h4>
+        <h5>Pruebas: {{$historial->pruebas}}<h5>
+        <h5>Pruebas aplicadas: {{$historial->pruebas_aplicadas}}<h5><br>
         <h5>Diagnostico: {{$historial->diagnostico}}<h5>
         <h5>Anotaciones: {{$historial->anotaciones}}<h5>
         <h5>Pronostico: {{$historial->pronostico}}<h5>
         <h5><a href="/historial/{{$historial->id}}/edit">Editar</a><h5><br>
+        @endisset
     </div>
 </x-plantilla>

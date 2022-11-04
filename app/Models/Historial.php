@@ -17,8 +17,8 @@ class Historial extends Model
         'madre', 'madrevive', 'hermano', 'hermanos', 'hermana', 'hermanas', 'hijo',
         'hijos', 'hija', 'hijas', 'numerohijo', 'vive', 
         'enf_actuales', 'infancia', 'enf_fam', 'habitos', 'alcohol',
-        'drogas', 'alimentacion', 'sueño', 'diagnostico', 'anotaciones', 'pronostico'
-        //,'pruebas','pruebas_aplicadas'
+        'drogas', 'alimentacion', 'sueño', 'diagnostico', 'anotaciones', 'pronostico',
+        'pruebas','pruebas_aplicadas'
     ];
 
     public function paciente()

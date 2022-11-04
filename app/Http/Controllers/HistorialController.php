@@ -91,15 +91,15 @@ class HistorialController extends Controller
         $historial->drogas = $request->drogas;
         $historial->alimentacion = $request->alimentacion;
         $historial->sueño = $request->sueño;
-        // $historial->pruebas = $request->pruebas;
-        // $historial->pruebas_aplicadas = $request->pruebas_aplicadas;
+        $historial->pruebas = $request->pruebas;
+        $historial->pruebas_aplicadas = $request->pruebas_aplicadas;
         $historial->diagnostico = $request->diagnostico;
         $historial->anotaciones = $request->anotaciones;
         $historial->pronostico = $request->pronostico;
         $paciente = Paciente::find($request->paciente_id);
         $paciente->historial()->save($historial);
 
-        return redirect('/paciente/'.$paciente->id);
+        return redirect()->route('paciente.show',$paciente->id);
     }
 
     /**
@@ -110,7 +110,6 @@ class HistorialController extends Controller
      */
     public function show(Historial $historial)
     {
-
         return view('pacientes.pacientesShow',compact('paciente'));
     }
 
@@ -141,7 +140,7 @@ class HistorialController extends Controller
 
         Historial::where('id', $historial->id)->update($request->except('_token', '_method'));
 
-        return redirect('/paciente/'.$paciente->id);
+        return redirect()->route('paciente.show',$historial->id);
     }
 
     /**
