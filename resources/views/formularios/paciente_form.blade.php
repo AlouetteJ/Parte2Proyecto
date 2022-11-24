@@ -31,7 +31,7 @@
             <div class="alerta" >{{session('message')}}</div>
         @endif
     <div class="container">
-        <form id="form_reusable" method="post" action="/paciente">
+        <form id="form_reusable" method="POST" action="/paciente">
             @csrf
             <div class="row">
                 <div class="col-25">
@@ -54,18 +54,7 @@
                             <i>{{$message}}</i>
                         @enderror                 
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-25">
-                    <label for="edad"> Edad:</label>
-                </div>
-                <div class="col-75">
-                    <input type="number" min='18' max='100' class="control_form" id="edad" name="edad" value="{{old('edad')}}"><br>
-                        @error('edad')
-                            <i>{{$message}}</i>
-                        @enderror
-                </div>
-            </div>  
+            </div> 
             <div class="row">
                 <div class="col-25">
                     <label for="nacimiento"> Fecha de nacimiento:</label>
@@ -77,7 +66,7 @@
                         @enderror
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="col-25">
                     <label for="correo"> Correo:</label>
@@ -94,7 +83,7 @@
                     <label for="telefono"> Telefono:</label>
                 </div>
                 <div class="col-75">
-                    <input type="tel" class="control_form" id="telefono" name="telefono" value="{{old('telefono')}}" pattern="[0-9]{10}"><br>
+                    <input type="text" class="control_form" id="telefono" name="telefono" value="{{old('telefono')}}"><br>
                         @error('telefono')
                             <i>{{$message}}</i>
                         @enderror

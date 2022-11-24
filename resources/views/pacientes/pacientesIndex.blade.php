@@ -17,7 +17,7 @@
             </div>
         </nav><br>
         <div class="p-5 mt-5">
-            <table border="1">
+            <table border="1px solid black">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
@@ -47,7 +47,6 @@
                             </a>
                         </td>
                         <td>{{$paciente->apellidos}}</td>
-                        <td>{{$paciente->edad}}</td>
                         <td>{{$paciente->nacimiento}}</td>
                         <td>{{$paciente->correo}}</td>
                         <td>{{$paciente->telefono}}</td>

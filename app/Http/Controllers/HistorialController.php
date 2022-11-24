@@ -137,7 +137,7 @@ class HistorialController extends Controller
             'peso'=> 'max:5',
             'estatura' => 'max:4'  
         ]);
-
+        //dd($request->all());
         Historial::where('id', $historial->id)->update($request->except('_token', '_method'));
 
         return redirect()->route('paciente.show',$historial->id);

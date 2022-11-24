@@ -30,13 +30,7 @@
                     <i>{{$message}}</i>
                 @enderror
             </div>
-            <div class="grupo_form">
-                <label for="edad"> Edad:</label>
-                <input type="number" min='18' max='100' class="control_form" id="edad" name="edad" value="{{old('edad') ?? $paciente->edad}}"><br>
-                @error('edad')
-                    <i>{{$message}}</i>
-                @enderror
-            </div>
+
             <div class="grupo_form">
                 <label for="nacimiento"> Fecha de nacimiento:</label>
                 <input type="date" class="control_form" id="nacimiento" name="nacimiento" min="1923-01-01" max="2004-01-01" value="{{old('nacimiento') ?? $paciente->nacimiento}}"><br>
@@ -53,7 +47,7 @@
             </div>
             <div class="grupo_form">
                 <label for="telefono"> Telefono:</label>
-                <input type="tel" class="control_form" id="telefono" name="telefono" value="{{old('telefono')?? $paciente->telefono}}" pattern="[0-9]{10}"><br>
+                <input type="text" class="control_form" id="telefono" name="telefono" value="{{old('telefono')?? $paciente->telefono}}"><br>
                 @error('telefono')
                     <i>{{$message}}</i>
                 @enderror

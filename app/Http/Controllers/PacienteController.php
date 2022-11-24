@@ -44,13 +44,14 @@ class PacienteController extends Controller
      */
     public function store(Request $request) 
     {
+
         $request->validate([
             'nombre'=> 'required|max:255',
             'apellidos'=> 'required|max:255',
             'edad'=> 'required|max:2',
             'nacimiento'=> 'required|date',
             'correo'=> 'required',
-            'telefono'=> 'required|max:10',
+            'telefono'=> 'required|min:10',
             'genero'=> 'required',
             'pronombre'=> 'required|max:255',
             'orientacion'=> 'required|max:255',
@@ -81,7 +82,8 @@ class PacienteController extends Controller
         $paciente->estudios = $request->estudios;
         $paciente->motivo = $request->motivo;
         Auth::user()->paciente()->save($paciente);
-        
+        dd($request->all());
+
         return redirect()->route('paciente.show',$paciente->id);
     }
 

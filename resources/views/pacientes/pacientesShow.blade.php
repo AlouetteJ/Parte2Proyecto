@@ -17,11 +17,14 @@
         </div>
     </nav><br>
     <div class="p-5 mt-5 fix-left">
+        @empty($paciente)
+            <h5><a href="/paciente/create" id="agrega">Crear perfil</a><h5><br>
+        @endempty
+        @isset($paciente)
         <h2>Informacion del paciente<h2>
         <h5>Nombre(s): {{$paciente->nombre}}<h5>
         <h5>Apellido(s): {{$paciente->apellidos}}<h5>
-        <h5>Edad: {{$paciente->edad}}<h5>
-        <h5>Fecha de nacimiento: {{$paciente->nacimiento}}<h5>
+        <h5>Edad: {{$paciente->nacimiento->age}}<h5>
         <h5>Correo: {{$paciente->correo}}<h5>
         <h5>Telefono: {{$paciente->telefono}}<h5>
         <h5>Genero: {{$paciente->genero}}<h5>
@@ -34,7 +37,8 @@
         <h5>Residencia anterior: {{$paciente->resanterior}}<h5>
         <h5>Nivel de estudios: {{$paciente->estudios}}<h5>
         <h5>Motivo de consulta: {{$paciente->motivo}}<h5> 
-        <h5><a href="/paciente/{{$paciente->id}}/edit">Editar</a><h5><br>
+        <h5><a href="/paciente/{{$paciente->id}}/edit"><input type="submit" value="Editar"></a><h5><br>
+        @endisset
 
         <h2>Historial del paciente<h2>
         @empty($historial)
@@ -87,7 +91,12 @@
         <h5>Diagnostico: {{$historial->diagnostico}}<h5>
         <h5>Anotaciones: {{$historial->anotaciones}}<h5>
         <h5>Pronostico: {{$historial->pronostico}}<h5>
-        <h5><a href="/historial/{{$historial->id}}/edit">Editar</a><h5><br>
+        <a href="/historial/{{$historial->id}}/edit"><input type="submit" value="Editar"></a>
+        <form action="/paciente/{{$paciente->id}}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Eliminar">
+        </form><br>
         @endisset
     </div>
 </x-plantilla>

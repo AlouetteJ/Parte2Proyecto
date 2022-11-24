@@ -18,11 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->smallInteger('edad')->unsigned();
             $table->date('nacimiento');
             $table->string('correo');
-            $table->string('telefono',10);
-            $table->string('genero',10);
+            $table->string('telefono');
+            $table->string('genero');
             $table->string('pronombre');
             $table->string('orientacion');
             $table->string('ocupacion');
