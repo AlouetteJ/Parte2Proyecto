@@ -53,11 +53,11 @@ return new class extends Migration
             $table->smallInteger('numerohijo')->unsigned()->default(0)->nullable();
             $table->text('vive')->nullable();
             // Antecedentes enfermedades
-            $table->string('enf_actuales')->nullable();
+            $table->json('enf_actuales')->nullable();
             // Enfermedades infancia
             $table->text('infancia')->nullable();
             // Enfermedades familiares
-            $table->string('enf_fam')->nullable();
+            $table->json('enf_fam')->nullable();
             // Antecedentes personales
             $table->text('habitos')->nullable();
             $table->text('alcohol')->nullable();

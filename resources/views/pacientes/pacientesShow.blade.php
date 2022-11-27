@@ -11,7 +11,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
                     <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contacto">Contactame</a></li> -->
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Salir</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <h2>Informacion del paciente<h2>
         <h5>Nombre(s): {{$paciente->nombre}}<h5>
         <h5>Apellido(s): {{$paciente->apellidos}}<h5>
-        <h5>Edad: {{$paciente->nacimiento->age}}<h5>
+        <h5>Edad: {{$paciente->nacimiento}}<h5>
         <h5>Correo: {{$paciente->correo}}<h5>
         <h5>Telefono: {{$paciente->telefono}}<h5>
         <h5>Genero: {{$paciente->genero}}<h5>
@@ -76,9 +76,27 @@
         <h5>Numero de hijo: {{$historial->numerohijo}}<h5>
         <h5>Con quienes vive: {{$historial->vive}}<h5><br>
         <h4>Antecedentes enfermedades<h4>
-        <h5>Enfermedades actuales: {{$historial->enf_actuales}}<h5>
+        <h5>Enfermedades actuales: 
+            @isset($historial->enf_actuales)
+            @php
+                $enfermedades2 = json_decode($historial->enf_actuales)
+            @endphp
+            @foreach($enfermedades2 as $enfs)
+                {{$enfs}},
+            @endforeach
+            @endisset
+        <h5>
         <h5>Enfermedades infancia: {{$historial->infancia}}<h5>
-        <h5>Enfermedades familiares: {{$historial->enf_fam}}<h5><br>
+        <h5>Enfermedades familiares: 
+            @isset($historial->enf_fam)
+            @php
+                $enfermedades = json_decode($historial->enf_fam)
+            @endphp
+            @foreach($enfermedades as $enfs)
+                {{$enfs}},
+            @endforeach   
+            @endisset 
+        <h5><br>
         <h4>Antecedentes personales<h4>
         <h5>Habitos: {{$historial->habitos}}<h5>
         <h5>Ingesta de alcohol: {{$historial->alcohol}}<h5>

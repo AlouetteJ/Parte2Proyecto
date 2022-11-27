@@ -113,17 +113,17 @@
         <fieldset>
             <legend>Antecedentes enfermedades</legend>
             <label for="enf_actuales"> Enfermedades actuales:</label><br>
-            <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Diabetes"><br>
-            <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Hipertension"><br>
-            <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Cancer"><br>
+            <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" ><br>
+            <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Hipertension" ><br>
+            <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Cancer" ><br>
             <label for="enf_actuales"> Otros:</label><br>
             <textarea type="text" class="control-form" name="otros" value="{{old('otros')}}"></textarea><br><br>
             <label for="enf_infancia"> Enfermedades infancia:</label><br>
             <textarea type="text" class="control_form" id="infancia" name="infancia" value="{{old('infancia')}}"></textarea><br><br>
             <label for="enf_fam"> Enfermedades familiares:</label><br>
-            <label for="enf_fam"> Diabetes:</label><input type="checkbox"  name="enf_actuales" class="control_form" value="Diabetes"><br>
-            <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Hipertension"><br>
-            <label for="enf_fam"> Cancer:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Cancer"><br>
+            <label for="enf_fam"> Diabetes:</label><input type="checkbox"  name="enf_fam[]" class="control_form" value="Diabetes" ><br>
+            <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Hipertension" ><br>
+            <label for="enf_fam"> Cancer:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Cancer" ><br>
             <label for="enf_fam"> Otros:</label><br>
             <textarea type="text" class="control-form" name="otros1" value="{{old('otros1')}}"></textarea><br>
         </fieldset>

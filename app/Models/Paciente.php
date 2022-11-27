@@ -22,4 +22,5 @@ class Paciente extends Model
     {
         return $this->hasOne(Historial::class);
     }
+
 }

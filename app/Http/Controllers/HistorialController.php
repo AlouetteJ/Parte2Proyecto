@@ -83,9 +83,9 @@ class HistorialController extends Controller
         $historial->hijas = $request->hijas;
         $historial->numerohijo = $request->numerohijo;
         $historial->vive = $request->vive;
-        $historial->enf_actuales = $request->enf_actuales;
+        $historial->enf_actuales = json_encode($request->enf_actuales);
         $historial->infancia = $request->infancia;
-        $historial->enf_fam = $request->enf_fam;
+        $historial->enf_fam = json_encode($request->enf_fam);
         $historial->habitos = $request->habitos;
         $historial->alcohol = $request->alcohol;
         $historial->drogas = $request->drogas;
@@ -137,7 +137,7 @@ class HistorialController extends Controller
             'peso'=> 'max:5',
             'estatura' => 'max:4'  
         ]);
-        //dd($request->all());
+        dd($request->all());
         Historial::where('id', $historial->id)->update($request->except('_token', '_method'));
 
         return redirect()->route('paciente.show',$historial->id);

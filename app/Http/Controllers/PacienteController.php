@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
-    public function _construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -48,7 +48,6 @@ class PacienteController extends Controller
         $request->validate([
             'nombre'=> 'required|max:255',
             'apellidos'=> 'required|max:255',
-            'edad'=> 'required|max:2',
             'nacimiento'=> 'required|date',
             'correo'=> 'required',
             'telefono'=> 'required|min:10',
@@ -67,7 +66,6 @@ class PacienteController extends Controller
         $paciente = new Paciente();
         $paciente->nombre = $request->nombre;
         $paciente->apellidos = $request->apellidos;
-        $paciente->edad = $request->edad;
         $paciente->nacimiento = $request->nacimiento;
         $paciente->correo = $request->correo;
         $paciente->telefono = $request->telefono;
@@ -82,7 +80,6 @@ class PacienteController extends Controller
         $paciente->estudios = $request->estudios;
         $paciente->motivo = $request->motivo;
         Auth::user()->paciente()->save($paciente);
-        dd($request->all());
 
         return redirect()->route('paciente.show',$paciente->id);
     }
@@ -119,15 +116,14 @@ class PacienteController extends Controller
      * @param  \App\Models\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(Request $request, Paciente $paciente,)
     {
         $request->validate([
             'nombre'=> 'required|max:255',
             'apellidos'=> 'required|max:255',
-            'edad'=> 'required|max:2',
             'nacimiento'=> 'required|date',
             'correo'=> 'required',
-            'telefono'=> 'required|max:10',
+            'telefono'=> 'required|min:10',
             'genero'=> 'required',
             'pronombre'=> 'required|max:255',
             'orientacion'=> 'required|max:255',
@@ -142,7 +138,7 @@ class PacienteController extends Controller
 
         Paciente::where('id', $paciente->id)->update($request->except('_token', '_method','ine'));
 
-        return redirect('/paciente');
+        return redirect()->route('paciente.show',$paciente->id);
     }
 
     /**

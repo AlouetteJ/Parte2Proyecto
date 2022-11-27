@@ -107,19 +107,25 @@
                 </div>
             </fieldset>
             <fieldset>
+                @php
+                    $enfermedades = json_decode($historial->enf_actuales);
+                @endphp
                 <legend>Antecedentes enfermedades</legend>
                 <label for="enf_actuales"> Enfermedades actuales:</label><br>
-                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Diabetes" {{old('enf_actuales') ?? $historial->enf_actuales == 'Diabetes'?'checked':''}}><br>
-                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Hipertension" {{old('enf_actuales') ?? $historial->enf_actuales == 'Hipertension'?'checked':''}}><br>
-                <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales" class="control_form" value="Cancer" {{old('enf_actuales') ?? $historial->enf_actuales == 'Cancer'?'checked':''}}><br>
+                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" {{(in_array("Diabetes", $enfermedades) ? "checked":""}}><br>
+                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades) ? "checked":""}}><br>
+                <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Cancer" {{in_array("Cancer", $enfermedades) ? "checked":""}}><br>
                 <label for="enf_actuales"> Otros:</label><br>
                 <textarea type="text" class="control_form" name="enf_actuales" value="{{old('otros') ?? $historial->otros}}"></textarea><br><br>
                 <label for="enf_infancia"> Enfermedades infancia:</label><br>
                 <textarea type="text" class="control_form" id="infancia" name="infancia" value="{{old('infancia') ?? $historial->infancia}}"></textarea><br><br>
+                @php
+                    $enfermedades2 = json_decode($historial->enf_fam);
+                @endphp
                 <label for="enf_fam"> Enfermedades familiares:</label><br>
-                <label for="enf_fam"> Diabetes:</label><input type="checkbox" name="enf_fam" class="control_form" value="Diabetes" {{old('enf_fam') ?? $historial->enf_fam == 'Diabetes'?'checked':''}}><br>
-                <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam" class="control_form" value="Hipertension" {{old('enf_fam') ?? $historial->enf_fam == 'Hipertension'?'checked':''}}><br>
-                <label for="enf_fam"> Cancer:</label><input type="checkbox"  name="enf_fam" class="control_form" value="Cancer" {{old('enf_fam') ?? $historial->enf_fam == 'Cancer'?'checked':''}}><br>
+                <label for="enf_fam"> Diabetes:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Diabetes" {{in_array("Diabetes", $enfermedades2) ? "checked":""}}><br>
+                <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades2) ? "checked":""}}><br>
+                <label for="enf_fam"> Cancer:</label><input type="checkbox"  name="enf_fam[]" class="control_form" value="Cancer" {{in_array("Cancer", $enfermedades2) ? "checked":""}}><br>
                 <label for="enf_fam"> Otros:</label><br>
                 <textarea type="text" class="control_form" name="enf_fam" value="{{old('otros1') ?? $historial->otros1}}"></textarea><br>
             </fieldset>

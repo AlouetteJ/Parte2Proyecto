@@ -16,7 +16,7 @@ class Historial extends Model
         'cabello', 'cejas', 'mandibula', 'cuello', 'dientes', 'padre', 'padrevive',
         'madre', 'madrevive', 'hermano', 'hermanos', 'hermana', 'hermanas', 'hijo',
         'hijos', 'hija', 'hijas', 'numerohijo', 'vive', 
-        'enf_actuales', 'infancia', 'enf_fam', 'habitos', 'alcohol',
+        'enfs_actuales', 'infancia', 'enfs_fam', 'habitos', 'alcohol',
         'drogas', 'alimentacion', 'sueño', 'diagnostico', 'anotaciones', 'pronostico',
         'pruebas','pruebas_aplicadas'
     ];

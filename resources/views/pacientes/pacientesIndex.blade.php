@@ -11,11 +11,16 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
                         <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contacto">Contactame</a></li> -->
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Salir</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
                     </ul>
                 </div>
             </div>
-        </nav><br>
+        </nav><br><br><br>
+        <!-- Si no esta registrado como paciente que aparezca el boton de lo contrario aparece su perfil -->
+        <div class="p-5 mt-5">
+        <input type="button" href="/paciente/create" value="Crear perfil">
+        </div>
+        <!-- Si es administrador entonces puede ver todos los pacientes -->
         <div class="p-5 mt-5">
             <table border="1px solid black">
                 <tr>
