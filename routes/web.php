@@ -27,6 +27,10 @@ Route::get('/contacto', function () {
     return view('contacto_form');
 });
 
+Route::get('/perfil', function () {
+    return view('/perfil');
+});
+
 Route::resource('/paciente',PacienteController::class);
 
 Route::resource('/historial',HistorialController::class);

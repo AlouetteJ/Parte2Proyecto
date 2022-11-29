@@ -16,9 +16,7 @@
             </div>
         </div>
     </nav><br><br><br><br><br>
-    @if(session('message'))
-        <div class="alerta" >{{session('message')}}</div>
-    @endif
+
     <form id="form_reusable" method="POST" action="/historial">
         @csrf
         <div class="grupo_form">
@@ -132,37 +130,22 @@
             <div class="grupo_form">
                 <label for="habitos"> Habitos:</label><br>
                 <textarea type="text" class="control_form" name="habitos" value="{{old('habitos')}}"></textarea><br>
-                @error('habitos')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="alcohol"> Ingesta de alcohol:</label><br>
                 <textarea type="text" class="control_form" name="alcohol" value="{{old('alcohol')}}"></textarea><br>
-                @error('alcohol')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="drogas"> Ingesta de drogas:</label><br>
                 <textarea type="text" class="control_form" name="drogas" value="{{old('drogas')}}"></textarea><br>
-                @error('drogas')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="alimentacion"> Tipo de Alimentacion:</label><br>
                 <textarea type="text" class="control_form" name="alimentacion" value="{{old('alimentacion')}}"></textarea><br>
-                @error('alimentacion')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="sueño"> Habitos de sueño:</label><br>
                 <textarea type="text" class="control_form" name="sueño" value="{{old('sueño')}}"></textarea><br>
-                @error('sueño')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
         </fieldset>
         <fieldset>
@@ -170,39 +153,24 @@
             <div class="grupo_form">
                 <label for="pruebas"> Pruebas:</label><br>
                 <textarea class="control_form" id="pruebas" name="pruebas" value="{{old('pruebas')}}"></textarea><br>
-                @error('pruebas')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="pruebas_aplicadas"> Pruebas aplicadas:</label><br>
                 <textarea class="control_form" name="pruebas_aplicadas" value="{{old('pruebas_aplicadas')}}"></textarea><br>
                 <input type="file" class="control_form" name="pruebas_aplicadas" accept="image/png, image/jpeg, image/jpg, application/pdf"><br>
-                @error('pruebas_aplicadas')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
         </fieldset>
         <div class="grupo_form">
             <label for="diagnostico"> Diagnostico:</label><br>
             <textarea class="control_form" type="textarea" name="diagnostico" placeholder="Diagnostico" maxlength="6000" rows="7">{{old('diagnostico')}}</textarea><br>
-            @error('diagnostico')
-                <i>{{$message}}</i>
-            @enderror
         </div>
         <div class="grupo_form">
             <label for="anotaciones"> Anotaciones:</label><br>
             <textarea class="control_form" type="textarea" name="anotaciones" placeholder="Anotaciones" maxlength="6000" rows="7">{{old('anotaciones')}}</textarea><br>
-            @error('anotaciones')
-                <i>{{$message}}</i>
-            @enderror
         </div>
         <div class="grupo_form">
             <label for="pronostico"> Pronostico:</label><br>
             <textarea class="control_form" type="textarea" name="pronostico" placeholder="Pronostico" maxlength="6000" rows="7">{{old('pronostico')}}</textarea><br>
-            @error('pronostico')
-                <i>{{$message}}</i>
-            @enderror
         </div>
         <button type="submit" class="boton_enviar" id="boton_historial">Guardar &rarr;</button>
         <input type="hidden" value="{{request()->paciente_id}}" name="paciente_id">

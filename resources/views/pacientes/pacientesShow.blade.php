@@ -15,11 +15,17 @@
                 </ul>
             </div>
         </div>
-    </nav><br>
-    <div class="p-5 mt-5 fix-left">
-        @empty($paciente)
-            <h5><a href="/paciente/create" id="agrega">Crear perfil</a><h5><br>
-        @endempty
+    </nav><br><br>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    
+
+    <div class="p-5 fix-left mt-5">
         @isset($paciente)
         <h2>Informacion del paciente<h2>
         <h5>Nombre(s): {{$paciente->nombre}}<h5>

@@ -304,7 +304,8 @@ svg {
 
 table {
   caption-side: bottom;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 15px;
 }
 
 caption {
@@ -447,6 +448,7 @@ legend + * {
   direction: ltr;
 }
 */
+
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -4909,9 +4911,9 @@ textarea.form-control-lg {
 .alert {
   position: relative;
   padding: 1rem 1rem;
-  margin-bottom: 1rem;
   border: 0.125rem solid transparent;
   border-radius: 0.5rem;
+  margin-top: 3.5rem
 }
 
 .alert-heading {
@@ -4955,6 +4957,8 @@ textarea.form-control-lg {
   color: #0f5132;
   background-color: #d1e7dd;
   border-color: #badbcc;
+  padding-top: 1em;
+  margin-top: 3.5rem
 }
 .alert-success .alert-link {
   color: #0c4128;
@@ -11508,3 +11512,4 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+

@@ -11,12 +11,20 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
-                        <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contacto">Contactame</a></li> -->
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Iniciar sesion</a></li>
                     </ul>
                 </div>
             </div>
         </nav><br>
+
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        @endif
+
         <div class="mt-5 p-5">
             <h2>Contactame</h2> ¿Tienes alguna pregunta?
             <p> Envia tu mensaje en el formulario debajo y me contactare contigo lo mas pronto posible. </p>
@@ -25,23 +33,14 @@
                 <div class="grupo_form">
                     <label for="nombre"> Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value="{{old('nombre')}}"><br>
-                    @error('nombre')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="correo"> Correo:</label>
                     <input type="email" class="form-control" id="correo" name="correo" placeholder="example@test.com" value="{{old('correo')}}"><br>
-                    @error('correo')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="mensaje"> Mensaje:</label><br>
                     <textarea class="form-control" type="textarea" name="mensaje" id="mensaje" placeholder="Tu mensaje aqui" maxlength="6000" rows="7">{{old('mensaje')}}</textarea>
-                    @error('mensaje')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <button type="submit" class="btn btn-lg btn-success pull-right" id="btnContactUs">Enviar &rarr;</button>
                 <button type="reset" class="btn btn-lg btn-success" id="btnContactUs" name="reset" >Limpiar</button>

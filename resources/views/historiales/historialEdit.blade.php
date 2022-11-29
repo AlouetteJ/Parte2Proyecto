@@ -9,13 +9,21 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Inicio</a></li>-->
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#salir">Salir</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
                 </ul>
             </div>
         </div>
     </nav><br><br><br><br><br>
+
+    @php
+        $enfermedades = json_decode($historial->enf_actuales)
+    @endphp
+
+    @php
+        $enfermedades2 = json_decode($historial->enf_fam)
+    @endphp
+
     <div class="mt-5 p-5">
         <form id="form_reusable" method="POST" action="/historial/{{$historial->id}}">
             @csrf
@@ -107,21 +115,15 @@
                 </div>
             </fieldset>
             <fieldset>
-                @php
-                    $enfermedades = json_decode($historial->enf_actuales);
-                @endphp
                 <legend>Antecedentes enfermedades</legend>
                 <label for="enf_actuales"> Enfermedades actuales:</label><br>
-                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" {{(in_array("Diabetes", $enfermedades) ? "checked":""}}><br>
+                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" {{in_array("Diabetes", $enfermedades) ? "checked":""}}><br>
                 <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades) ? "checked":""}}><br>
                 <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Cancer" {{in_array("Cancer", $enfermedades) ? "checked":""}}><br>
                 <label for="enf_actuales"> Otros:</label><br>
                 <textarea type="text" class="control_form" name="enf_actuales" value="{{old('otros') ?? $historial->otros}}"></textarea><br><br>
                 <label for="enf_infancia"> Enfermedades infancia:</label><br>
                 <textarea type="text" class="control_form" id="infancia" name="infancia" value="{{old('infancia') ?? $historial->infancia}}"></textarea><br><br>
-                @php
-                    $enfermedades2 = json_decode($historial->enf_fam);
-                @endphp
                 <label for="enf_fam"> Enfermedades familiares:</label><br>
                 <label for="enf_fam"> Diabetes:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Diabetes" {{in_array("Diabetes", $enfermedades2) ? "checked":""}}><br>
                 <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades2) ? "checked":""}}><br>
@@ -134,37 +136,22 @@
                 <div class="grupo_form">
                     <label for="habitos"> Habitos:</label><br>
                     <textarea type="text" class="control_form" name="habitos" value="{{old('habitos') ?? $historial->habitos}}"></textarea><br>
-                    @error('habitos')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="alcohol"> Ingesta de alcohol:</label><br>
                     <textarea type="text" class="control_form" name="alcohol" value="{{old('alcohol') ?? $historial->alcohol}}"></textarea><br>
-                    @error('alcohol')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="drogas"> Ingesta de drogas:</label><br>
                     <textarea type="text" class="control_form" name="drogas" value="{{old('drogas') ?? $historial->drogas}}"></textarea><br>
-                    @error('drogas')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="alimentacion"> Tipo de Alimentacion:</label><br>
                     <textarea type="text" class="control_form" name="alimentacion" value="{{old('alimentacion') ?? $historial->alimentacion}}"></textarea><br>
-                    @error('alimentacion')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="sueño"> Habitos de sueño:</label><br>
                     <textarea type="text" class="control_form" id="sueño" name="sueño" value="{{old('sueño')  ?? $historial->sueño}}"></textarea><br>
-                    @error('sueño')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
             </fieldset>
             <fieldset>
@@ -172,39 +159,24 @@
                 <div class="grupo_form">
                     <label for="pruebas"> Pruebas:</label><br>
                     <textarea class="control_form" name="pruebas" value="{{old('pruebas') ?? $historial->pruebas}}"></textarea><br>
-                    @error('pruebas')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
                 <div class="grupo_form">
                     <label for="pruebas_aplicadas"> Pruebas aplicadas:</label><br>
                     <textarea class="control_form" name="pruebas_aplicadas" value="{{old('pruebas_aplicadas')  ?? $historial->pruebas_aplicadas}}"></textarea><br>
                     <input type="file" class="control_form" name="pruebas_aplicadas" accept="image/png, image/jpeg, image/jpg, application/pdf"><br>
-                    @error('pruebas_aplicadas')
-                        <i>{{$message}}</i>
-                    @enderror
                 </div>
             </fieldset>
             <div class="grupo_form">
                 <label for="diagnostico"> Diagnostico:</label><br>
                 <textarea class="control_form" type="textarea" name="diagnostico" placeholder="Diagnostico" maxlength="6000" rows="7" value="{{old('diagnostico') ?? $historial->diagnostico}}"></textarea><br>
-                @error('diagnostico')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="anotaciones"> Anotaciones:</label><br>
                 <textarea class="control_form" type="textarea" name="anotaciones" placeholder="Anotaciones" maxlength="6000" rows="7" value="{{old('anotaciones') ?? $historial->anotaciones}}"></textarea><br>
-                @error('anotaciones')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <div class="grupo_form">
                 <label for="pronostico"> Pronostico:</label><br>
                 <textarea class="control_form" type="textarea" name="pronostico" placeholder="Pronostico" maxlength="6000" rows="7"value="{{old('pronostico') ?? $historial->pronostico}}"></textarea><br>
-                @error('pronostico')
-                    <i>{{$message}}</i>
-                @enderror
             </div>
             <button type="submit" class="boton_enviar" id="boton_historial">Guardar &rarr;</button>
         </form>
