@@ -6,6 +6,7 @@ use App\Models\Paciente;
 use App\Models\Historial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class PacienteController extends Controller
 {
@@ -118,6 +119,11 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente,)
     {
+        // Gate::authorize('edita-paciente', $paciente);
+        if (! Gate::allows('edita-paciente', $paciente)) {
+            abort(403);
+        }
+
         $request->validate([
             'nombre'=> 'required|max:255',
             'apellidos'=> 'required|max:255',

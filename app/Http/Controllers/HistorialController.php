@@ -152,6 +152,7 @@ class HistorialController extends Controller
     public function destroy(Historial $historial)
     {
         $historial->delete();
-        return redirect('/paciente');
+        $paciente = Paciente::find($request->paciente_id);
+        return redirect()->route('paciente.show',$paciente->id);
     }
 }
