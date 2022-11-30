@@ -35,7 +35,7 @@
     @endif
         
     <div class="container">
-        <form id="form_reusable" method="POST" action="/paciente">
+        <form id="form_reusable" method="POST" action="/paciente" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-25">
@@ -190,7 +190,7 @@
                     <label for="ine"> Fotografias ine por dos lados:</label>
                 </div>
                 <div class="col-75">
-                    <input type="file" class="control_form" id="ine" name="ine" accept="image/png, image/jpeg, image/jpg"><br>
+                    <input type="file" class="control_form" id="" name="archivo" accept="image/png, image/jpeg, image/jpg"><br>
                 </div>
             </div>
 

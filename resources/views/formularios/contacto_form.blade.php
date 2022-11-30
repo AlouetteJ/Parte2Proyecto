@@ -10,9 +10,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Inicio</a></li>
+                        @if(isset(auth()->user()->id))
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/perfil">Perfil</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
+                        @else
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/login">Iniciar sesion</a></li>
-                    </ul>
+                        @endif
                 </div>
             </div>
         </nav><br>

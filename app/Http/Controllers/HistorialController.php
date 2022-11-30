@@ -83,9 +83,6 @@ class HistorialController extends Controller
         $historial->hijas = $request->hijas;
         $historial->numerohijo = $request->numerohijo;
         $historial->vive = $request->vive;
-        $historial->enf_actuales = json_encode($request->enf_actuales);
-        $historial->infancia = $request->infancia;
-        $historial->enf_fam = json_encode($request->enf_fam);
         $historial->habitos = $request->habitos;
         $historial->alcohol = $request->alcohol;
         $historial->drogas = $request->drogas;
@@ -137,7 +134,7 @@ class HistorialController extends Controller
             'peso'=> 'max:5',
             'estatura' => 'max:4'  
         ]);
-        dd($request->all());
+
         Historial::where('id', $historial->id)->update($request->except('_token', '_method'));
 
         return redirect()->route('paciente.show',$historial->id);
@@ -151,6 +148,7 @@ class HistorialController extends Controller
      */
     public function destroy(Historial $historial)
     {
+        $this->authorize('delete',$historial);
         $historial->delete();
         $paciente = Paciente::find($request->paciente_id);
         return redirect()->route('paciente.show',$paciente->id);

@@ -2,15 +2,14 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="/inicio">Psicoterapeuta</a>
+            <a class="navbar-brand" href="/">Psicoterapeuta</a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
-                    <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contacto">Contactame</a></li> -->
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Inicio</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
                 </ul>
             </div>
@@ -30,7 +29,7 @@
         <h2>Informacion del paciente<h2>
         <h5>Nombre(s): {{$paciente->nombre}}<h5>
         <h5>Apellido(s): {{$paciente->apellidos}}<h5>
-        <h5>Edad: {{$paciente->nacimiento}}<h5>
+        <h5>Edad: {{$paciente->nacimiento->age}}<h5>
         <h5>Correo: {{$paciente->correo}}<h5>
         <h5>Telefono: {{$paciente->telefono}}<h5>
         <h5>Genero: {{$paciente->genero}}<h5>
@@ -42,10 +41,13 @@
         <h5>Residencia actualmente: {{$paciente->resactual}}<h5>
         <h5>Residencia anterior: {{$paciente->resanterior}}<h5>
         <h5>Nivel de estudios: {{$paciente->estudios}}<h5>
-        <h5>Motivo de consulta: {{$paciente->motivo}}<h5> 
+        <h5>Motivo de consulta: {{$paciente->motivo}}<h5>
+        @if(auth()->user()->paciente->id == $paciente->id)
         <h5><a href="/paciente/{{$paciente->id}}/edit"><input type="submit" value="Editar"></a><h5><br>
+        @endif
         @endisset
 
+        <br>
         <h2>Historial del paciente<h2>
         @empty($historial)
         <h5><a href="/historial/create?paciente_id={{$paciente->id}}" id="agrega">Agregar</a><h5><br>
@@ -81,28 +83,7 @@
         <h5>Hija: {{$historial->hija}}<h5><h5>Cuantos: {{$historial->hijas}}<h5>
         <h5>Numero de hijo: {{$historial->numerohijo}}<h5>
         <h5>Con quienes vive: {{$historial->vive}}<h5><br>
-        <h4>Antecedentes enfermedades<h4>
-        <h5>Enfermedades actuales: 
-            @isset($historial->enf_actuales)
-            @php
-                $enfermedades2 = json_decode($historial->enf_actuales)
-            @endphp
-            @foreach($enfermedades2 as $enfs)
-                {{$enfs}},
-            @endforeach
-            @endisset
-        <h5>
-        <h5>Enfermedades infancia: {{$historial->infancia}}<h5>
-        <h5>Enfermedades familiares: 
-            @isset($historial->enf_fam)
-            @php
-                $enfermedades = json_decode($historial->enf_fam)
-            @endphp
-            @foreach($enfermedades as $enfs)
-                {{$enfs}},
-            @endforeach   
-            @endisset 
-        <h5><br>
+        
         <h4>Antecedentes personales<h4>
         <h5>Habitos: {{$historial->habitos}}<h5>
         <h5>Ingesta de alcohol: {{$historial->alcohol}}<h5>
@@ -115,12 +96,14 @@
         <h5>Diagnostico: {{$historial->diagnostico}}<h5>
         <h5>Anotaciones: {{$historial->anotaciones}}<h5>
         <h5>Pronostico: {{$historial->pronostico}}<h5>
+        @can('delete',$historial)
         <a href="/historial/{{$historial->id}}/edit"><input type="submit" value="Editar"></a>
-        <form action="/paciente/{{$paciente->id}}" method="post">
+        <form action="/historial/{{$historial->id}}" method="post">
             @csrf
             @method('DELETE')
             <input type="submit" value="Eliminar">
         </form><br>
+        @endcan
         @endisset
     </div>
 </x-plantilla>

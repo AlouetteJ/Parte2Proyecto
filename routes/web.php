@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-Route::get('/inicio', function () {
-    return view('iniciolog');
-});
-
 Route::get('/contacto', function () {
     return view('contacto_form');
 });

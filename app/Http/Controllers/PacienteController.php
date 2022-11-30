@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archivos;
 use App\Models\Paciente;
 use App\Models\Historial;
 use Illuminate\Http\Request;
@@ -82,7 +83,16 @@ class PacienteController extends Controller
         $paciente->motivo = $request->motivo;
         Auth::user()->paciente()->save($paciente);
 
-        return redirect()->route('paciente.show',$paciente->id);
+        if($request->file('archivo')->isValid()){
+            $ubicacion = $request->archivo->store('pacientes_files');
+
+            $archivo = new Archivos();
+            $archivo->ubicacion = $ubicacion;
+            $archivo->nombre_original = $request->archivo->getClientOriginalName();
+            $archivo->mime = $request->archivo->getClientMimeType();
+
+            $paciente->archivos()->save($archivo);
+        }
     }
 
     /**
@@ -119,10 +129,7 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente,)
     {
-        // Gate::authorize('edita-paciente', $paciente);
-        if (! Gate::allows('edita-paciente', $paciente)) {
-            abort(403);
-        }
+        Gate::authorize('edita-paciente', $paciente);
 
         $request->validate([
             'nombre'=> 'required|max:255',
@@ -142,7 +149,7 @@ class PacienteController extends Controller
             'motivo'=> 'required',
         ]);
 
-        Paciente::where('id', $paciente->id)->update($request->except('_token', '_method','ine'));
+        Paciente::where('id', $paciente->id)->update($request->except('_token', '_method'));
 
         return redirect()->route('paciente.show',$paciente->id);
     }

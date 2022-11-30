@@ -2,27 +2,19 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top mb-5" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="/inicio">Psicoterapeuta</a>
+            <a class="navbar-brand" href="/">Psicoterapeuta</a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Inicio</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><x-boton_salida></x-boton_salida></li>
                 </ul>
             </div>
         </div>
     </nav><br><br><br><br><br>
-
-    @php
-        $enfermedades = json_decode($historial->enf_actuales)
-    @endphp
-
-    @php
-        $enfermedades2 = json_decode($historial->enf_fam)
-    @endphp
 
     <div class="mt-5 p-5">
         <form id="form_reusable" method="POST" action="/historial/{{$historial->id}}">
@@ -114,23 +106,7 @@
                     <textarea type="text" class="control_form" name="vive" value="{{old('vive') ?? $historial->vive}}"></textarea><br>
                 </div>
             </fieldset>
-            <fieldset>
-                <legend>Antecedentes enfermedades</legend>
-                <label for="enf_actuales"> Enfermedades actuales:</label><br>
-                <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" {{in_array("Diabetes", $enfermedades) ? "checked":""}}><br>
-                <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades) ? "checked":""}}><br>
-                <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Cancer" {{in_array("Cancer", $enfermedades) ? "checked":""}}><br>
-                <label for="enf_actuales"> Otros:</label><br>
-                <textarea type="text" class="control_form" name="enf_actuales" value="{{old('otros') ?? $historial->otros}}"></textarea><br><br>
-                <label for="enf_infancia"> Enfermedades infancia:</label><br>
-                <textarea type="text" class="control_form" id="infancia" name="infancia" value="{{old('infancia') ?? $historial->infancia}}"></textarea><br><br>
-                <label for="enf_fam"> Enfermedades familiares:</label><br>
-                <label for="enf_fam"> Diabetes:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Diabetes" {{in_array("Diabetes", $enfermedades2) ? "checked":""}}><br>
-                <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Hipertension" {{in_array("Hipertension", $enfermedades2) ? "checked":""}}><br>
-                <label for="enf_fam"> Cancer:</label><input type="checkbox"  name="enf_fam[]" class="control_form" value="Cancer" {{in_array("Cancer", $enfermedades2) ? "checked":""}}><br>
-                <label for="enf_fam"> Otros:</label><br>
-                <textarea type="text" class="control_form" name="enf_fam" value="{{old('otros1') ?? $historial->otros1}}"></textarea><br>
-            </fieldset>
+
             <fieldset>
                 <legend>Antecedentes personales</legend>
                 <div class="grupo_form">

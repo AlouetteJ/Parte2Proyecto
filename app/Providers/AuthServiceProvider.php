@@ -17,6 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Paciente::class => PacientePolicy::class,
     ];
 
     /**
@@ -32,9 +33,5 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id == $paciente->user_id;
         });
 
-        Gate::define('elimina-paciente', function(User $user){
-            return $user->isAdmin
-                            ? Response::allow();
-        });
     }
 }

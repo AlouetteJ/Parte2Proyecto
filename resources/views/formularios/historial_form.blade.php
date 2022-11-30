@@ -2,15 +2,14 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top mb-5" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="/inicio">Psicoterapeuta</a>
+            <a class="navbar-brand" href="/">Psicoterapeuta</a>
             <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <!-- <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Inicio</a></li>-->
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/inicio">Inicio</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/">Inicio</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#salir">Salir</a></li>
                 </ul>
             </div>
@@ -22,9 +21,6 @@
         <div class="grupo_form">
             <label for="motivos"> Motivo de consulta:</label><br>
             <textarea type="textarea" class="control_form" name="motivos" placeholder="Motivos de consulta" value="{{old('motivos')}}"></textarea>
-            @error('motivos')
-                <i>{{$message}}</i>
-            @enderror
         </div>
         <fieldset>
             <legend>Media Afiliacion</legend>
@@ -108,23 +104,7 @@
                 <textarea type="text" class="control_form" name="vive" value="{{old('vive')}}"></textarea><br>
             </div>
         </fieldset>
-        <fieldset>
-            <legend>Antecedentes enfermedades</legend>
-            <label for="enf_actuales"> Enfermedades actuales:</label><br>
-            <label for="enf_actuales"> Diabetes:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Diabetes" ><br>
-            <label for="enf_actuales"> Hipertension:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Hipertension" ><br>
-            <label for="enf_actuales"> Cancer:</label><input type="checkbox" name="enf_actuales[]" class="control_form" value="Cancer" ><br>
-            <label for="enf_actuales"> Otros:</label><br>
-            <textarea type="text" class="control-form" name="otros" value="{{old('otros')}}"></textarea><br><br>
-            <label for="enf_infancia"> Enfermedades infancia:</label><br>
-            <textarea type="text" class="control_form" id="infancia" name="infancia" value="{{old('infancia')}}"></textarea><br><br>
-            <label for="enf_fam"> Enfermedades familiares:</label><br>
-            <label for="enf_fam"> Diabetes:</label><input type="checkbox"  name="enf_fam[]" class="control_form" value="Diabetes" ><br>
-            <label for="enf_fam"> Hipertension:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Hipertension" ><br>
-            <label for="enf_fam"> Cancer:</label><input type="checkbox" name="enf_fam[]" class="control_form" value="Cancer" ><br>
-            <label for="enf_fam"> Otros:</label><br>
-            <textarea type="text" class="control-form" name="otros1" value="{{old('otros1')}}"></textarea><br>
-        </fieldset>
+
         <fieldset>
             <legend>Antecedentes personales</legend>
             <div class="grupo_form">

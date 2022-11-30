@@ -13,8 +13,8 @@ class Paciente extends Model
 
     public $timestamps = false;
     protected $fillable = ['nombre', 'apellidos', 'nacimiento', 'correo', 'telefono', 'genero', 'pronombre', 'orientacion', 'ocupacion', 'edocivil', 'resactual', 'resanterior', 'nacionalidad', 'estudios', 'motivo'];
-    //protected $dates = ['nacimiento'];
-    // protected $guarded Esto es lo contrario, nos dice que no se puede
+    protected $dates = ['nacimiento']; //Esto me ayuda a usar carbon para que me devuelva la edad en entero
+    //protected $guarded Esto es lo contrario, nos dice que no se puede
 
     public function usuario()
     {
@@ -24,6 +24,11 @@ class Paciente extends Model
     public function historial()
     {
         return $this->hasOne(Historial::class);
+    }
+
+    public function archivos()
+    {
+        return $this->hasMany(Archivos::class);
     }
 
 }
